@@ -3,8 +3,36 @@ import { useTenant } from "./hooks/useTenant";
 import { CartProvider } from "./hooks/useCart";
 import Menu from "./pages/Menu";
 import Checkout from "./pages/Checkout";
+import AdminLogin from "./pages/AdminLogin";
+import AdminLayout from "./pages/AdminLayout";
+import AdminProducts from "./pages/AdminProducts";
+import AdminRestaurant from "./pages/AdminRestaurant";
+import RequireAuth from "./components/RequireAuth";
 
 export default function App() {
+  return (
+    <Routes>
+      {/* ---------- Panel de administración (staff, requiere login) ---------- */}
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route
+        path="/admin"
+        element={
+          <RequireAuth>
+            <AdminLayout />
+          </RequireAuth>
+        }
+      >
+        <Route path="productos" element={<AdminProducts />} />
+        <Route path="restaurante" element={<AdminRestaurant />} />
+      </Route>
+
+      {/* ---------- Motor Web público (sin login) ---------- */}
+      <Route path="/*" element={<PublicStorefront />} />
+    </Routes>
+  );
+}
+
+function PublicStorefront() {
   const { organization, loading, error } = useTenant();
 
   if (loading) return <div className="p-8 text-center text-gray-500">Cargando restaurante...</div>;

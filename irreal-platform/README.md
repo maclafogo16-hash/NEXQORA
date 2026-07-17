@@ -132,6 +132,51 @@ pasos técnicos, en orden, según el roadmap ya definido:
 
 ---
 
+## 9. Panel de administración — cargar fotos y contenido sin tocar código
+
+A partir de la migración `0004_storage_y_marca.sql`, existe un panel en `/admin` donde
+tú misma puedes agregar productos con foto, editar precios y personalizar la marca del
+restaurante (logo, portada, color, frase corta) — sin editar SQL.
+
+### 9.1 Aplicar la nueva migración
+
+Igual que las anteriores: copia y pega el contenido de
+`supabase/migrations/0004_storage_y_marca.sql` en el **SQL Editor** de Supabase y dale **Run**.
+Esto crea el bucket de imágenes (`product-images`) y los campos de marca en `organizations`.
+
+### 9.2 Crear tu usuario de acceso al panel (un paso manual, una sola vez por persona)
+
+El panel usa el sistema de login de Supabase (Auth), separado de las cuentas de los
+clientes finales. Para crear tu propio acceso:
+
+1. En el dashboard de Supabase, ve a **Authentication → Users → Add user**.
+2. Crea el usuario con tu correo y una contraseña — marca la opción de que el correo
+   quede confirmado automáticamente (o confírmalo desde el enlace que llega al correo).
+3. Copia el **UUID** de ese usuario (aparece en la lista de usuarios).
+4. Ve al **SQL Editor** y ejecuta esto, reemplazando el UUID por el que copiaste
+   (este ejemplo te da acceso de `owner` al restaurante demo):
+
+   ```sql
+   insert into app_users (id, organization_id, full_name)
+   values ('PEGA-AQUI-TU-UUID', '00000000-0000-0000-0000-000000000001', 'Clara');
+
+   insert into user_roles (user_id, organization_id, role_id)
+   select 'PEGA-AQUI-TU-UUID', '00000000-0000-0000-0000-000000000001', id
+   from roles where code = 'owner';
+   ```
+
+5. Entra a `tudominio.vercel.app/admin/login` (o `?tenant=demo` con `/admin/login` si
+   aún no tienes el subdominio configurado) e inicia sesión con el correo y contraseña
+   del paso 2.
+
+Desde ahí ya puedes:
+- **Productos** — agregar, editar, subir foto, ocultar o eliminar productos, y crear categorías nuevas.
+- **Mi restaurante** — cambiar el logo, la foto de portada, el color de marca y la frase corta que aparece bajo el nombre.
+
+Cuando dan de alta un restaurante real, este mismo paso (crear su usuario `owner`) es
+parte del proceso de implementación — más adelante conviene automatizarlo para que no
+dependa de hacerlo a mano en el SQL Editor cada vez.
+
 ## 8. Checklist antes de vender el primer restaurante real
 
 - [ ] El restaurante demo funciona de punta a punta (menú → carrito → checkout → pedido guardado).

@@ -38,7 +38,7 @@ export function useTenant() {
     async function loadOrganization() {
       const { data, error: fetchError } = await supabase
         .from("organizations")
-        .select("id, name, slug, logo_url, primary_color, plan")
+        .select("id, name, slug, logo_url, cover_image_url, tagline, primary_color, plan")
         .eq("slug", slug)
         .single();
 

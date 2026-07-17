@@ -39,11 +39,29 @@ export default function Menu({ organization }) {
   return (
     <div className="max-w-2xl mx-auto pb-28">
       <header
-        className="px-6 py-8 text-white"
-        style={{ backgroundColor: organization.primary_color || "#16233B" }}
+        className="relative px-6 py-10 text-white bg-cover bg-center"
+        style={{
+          backgroundColor: organization.primary_color || "#16233B",
+          backgroundImage: organization.cover_image_url
+            ? `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${organization.cover_image_url})`
+            : undefined,
+        }}
       >
-        <h1 className="text-2xl font-bold">{organization.name}</h1>
-        <p className="text-sm opacity-80 mt-1">Pide directo, sin comisiones de terceros.</p>
+        <div className="flex items-center gap-3">
+          {organization.logo_url && (
+            <img
+              src={organization.logo_url}
+              alt=""
+              className="w-14 h-14 rounded-full object-cover border-2 border-white/60"
+            />
+          )}
+          <div>
+            <h1 className="text-2xl font-bold">{organization.name}</h1>
+            <p className="text-sm opacity-90 mt-0.5">
+              {organization.tagline || "Pide directo, sin comisiones de terceros."}
+            </p>
+          </div>
+        </div>
       </header>
 
       {categories.map((cat) => {
@@ -56,9 +74,18 @@ export default function Menu({ organization }) {
               {catProducts.map((product) => (
                 <div
                   key={product.id}
-                  className="flex items-center justify-between border-b border-gray-100 pb-3"
+                  className="flex items-center gap-3 border-b border-gray-100 pb-3"
                 >
-                  <div className="pr-4">
+                  {product.image_url ? (
+                    <img
+                      src={product.image_url}
+                      alt={product.name}
+                      className="w-16 h-16 rounded-lg object-cover shrink-0"
+                    />
+                  ) : (
+                    <div className="w-16 h-16 rounded-lg bg-gray-100 shrink-0" />
+                  )}
+                  <div className="flex-1 pr-2">
                     <p className="font-medium text-gray-900">{product.name}</p>
                     {product.description && (
                       <p className="text-sm text-gray-500">{product.description}</p>
