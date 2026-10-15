@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tortas Artesanales</title>
+<meta name="description" content="Tortas artesanales hechas a mano. Elige sabor y tamaño, personaliza tu torta y haz tu pedido por WhatsApp.">
+<meta name="theme-color" content="#A81F27">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Gloock&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Tortas Artesanales, inicio">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle class="mark-bg" cx="20" cy="20" r="20"/><path class="mark-ink" d="M10.5 22h19v6.5a2 2 0 0 1-2 2h-15a2 2 0 0 1-2-2z"/><path class="mark-ink" d="M12.5 22v-4.5h15V22"/><path class="mark-ink" d="M20 17.5v-3.2"/><circle class="mark-dot" cx="20" cy="12.2" r="2"/></svg>
+      <span><b data-brand>Tortas Artesanales</b><small data-tagline>Hechas a mano</small></span>
+    </a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#tortas">Tortas</a><a href="#fidelizacion">Puntos</a><a href="#contacto">Contacto</a>
+    </nav>
+    <div class="top-actions">
+      <button class="pill-btn" id="btnAccount" type="button"><span aria-hidden="true">☺</span><span class="lbl" id="accountLbl">Entrar</span></button>
+      <button class="pill-btn solid" id="btnCart" type="button" aria-label="Abrir carrito"><span aria-hidden="true">🛒</span><span class="lbl">Carrito</span><span class="badge num" id="cartCount">0</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Pedidos con tiempo, sabor de casa</p>
+        <h1>Tu torta, hecha a tu medida.</h1>
+        <p class="lead">Elige el sabor y el tamaño, escribe el mensaje que quieres en la torta y cuéntanos los detalles: color de la crema, flores, velas o ese juguete que la hace especial.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#tortas">Ver las tortas</a>
+          <a class="btn ghost" href="#fidelizacion">Cómo ganar puntos</a>
+        </div>
+        <div class="hero-facts"><span>Tres tamaños</span><span>Personalización incluida</span><span>Pedido por WhatsApp</span></div>
+      </div>
+      <div class="hero-art" id="heroArt" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="catalog" id="tortas">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">Catálogo</p><h2>Nuestras tortas</h2></div>
+        <p>Toca una torta para ver el detalle, escoger tamaño y personalizarla antes de agregarla al carrito.</p>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="loyalty" id="fidelizacion">
+    <div class="wrap grid2">
+      <div>
+        <p class="eyebrow">Programa de fidelización</p>
+        <h2>Cada torta te devuelve puntos</h2>
+        <p class="lead">Inicia sesión y suma 1 punto por cada $1.000 que compres. Con 100 puntos descuentas $5.000 en tu próximo pedido. Mientras más compras, más rápido sumas.</p>
+        <div class="tiers" id="tiers"></div>
+      </div>
+      <div class="acct" id="acct"></div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow">Contacto</p><h2>Hablemos de tu torta</h2></div></div>
+      <div class="grid2">
+        <div class="panel">
+          <h3>Escríbenos por WhatsApp</h3>
+          <p>Resolvemos dudas de sabores, fechas de entrega y diseños especiales. También puedes enviar una foto de referencia.</p>
+          <div class="copyrow">
+            <a class="btn wa" id="waContact" href="#" target="_blank" rel="noopener">Abrir WhatsApp</a>
+            <code id="waNumber"></code>
+            <button class="link" type="button" id="copyWa">Copiar número</button>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Síguenos</h3>
+          <p>Mira trabajos recientes y novedades de temporada.</p>
+          <div class="socials" id="socials"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo alt" href="#top" aria-label="Tortas Artesanales, inicio">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle class="mark-bg" cx="20" cy="20" r="20"/><path class="mark-ink" d="M10.5 22h19v6.5a2 2 0 0 1-2 2h-15a2 2 0 0 1-2-2z"/><path class="mark-ink" d="M12.5 22v-4.5h15V22"/><path class="mark-ink" d="M20 17.5v-3.2"/><circle class="mark-dot" cx="20" cy="12.2" r="2"/></svg>
+      <span><b data-brand>Tortas Artesanales</b><small data-tagline>Hechas a mano</small></span>
+    </a>
+    <small>Haz tu pedido con al menos 48 horas de anticipación.</small>
+  </div>
+</footer>
+
+<a class="fab" id="fab" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5A8.5 8.5 0 1 1 21 11.5z"/><circle cx="8.5" cy="11.5" r=".6" fill="currentColor"/><circle cx="12" cy="11.5" r=".6" fill="currentColor"/><circle cx="15.5" cy="11.5" r=".6" fill="currentColor"/></svg>
+  <span class="lbl">Escríbenos</span>
+</a>
+
+<div class="layer center" id="productLayer" hidden><div class="backdrop" data-close></div><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="pmTitle" id="productSheet"></div></div>
+<div class="layer side" id="cartLayer" hidden><div class="backdrop" data-close></div><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="cartTitle" id="cartSheet"></div></div>
+<div class="layer center" id="authLayer" hidden><div class="backdrop" data-close></div><div class="sheet narrow" role="dialog" aria-modal="true" aria-labelledby="authTitle" id="authSheet"></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/cake.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
