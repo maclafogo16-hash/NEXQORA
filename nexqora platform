@@ -1,0 +1,4 @@
+npm create vite@latest nexqora-platform -- --template react-ts
+cd nexqora-platform
+npm install
+npm run dev
